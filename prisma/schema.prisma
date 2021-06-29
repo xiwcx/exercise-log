@@ -62,5 +62,6 @@ model Exercise {
   id         String   @id @default(cuid())
   userId     String
   name       String
+  slug       String   @unique
   user       User     @relation(fields: [userId], references: [id])
 }

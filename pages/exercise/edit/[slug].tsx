@@ -3,18 +3,18 @@ import { gql, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 
 const EXERCISE = gql`
-  query exercise($id: String!) {
-    exercise(id: $id) {
+  query exercise($slug: String!) {
+    exercise(slug: $slug) {
       name
-      id
+      slug
     }
   }
 `;
 
 export default function Home() {
   const router = useRouter();
-  const { id } = router.query;
-  const { data, loading } = useQuery(EXERCISE, { variables: { id } });
+  const { slug } = router.query;
+  const { data, loading } = useQuery(EXERCISE, { variables: { slug } });
 
   if (loading) return <p>Loading</p>;
 

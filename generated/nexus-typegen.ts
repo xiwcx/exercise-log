@@ -31,6 +31,7 @@ export interface NexusGenObjects {
   Exercise: { // root type
     id: string; // String!
     name: string; // String!
+    slug: string; // String!
   }
   Mutation: {};
   Query: {};
@@ -50,6 +51,7 @@ export interface NexusGenFieldTypes {
   Exercise: { // field return type
     id: string; // String!
     name: string; // String!
+    slug: string; // String!
   }
   Mutation: { // field return type
     createExercise: NexusGenRootTypes['Exercise'] | null; // Exercise
@@ -64,6 +66,7 @@ export interface NexusGenFieldTypeNames {
   Exercise: { // field return type name
     id: 'String'
     name: 'String'
+    slug: 'String'
   }
   Mutation: { // field return type name
     createExercise: 'Exercise'
@@ -78,11 +81,12 @@ export interface NexusGenArgTypes {
   Mutation: {
     createExercise: { // args
       name: string; // String!
+      slug: string; // String!
     }
   }
   Query: {
     exercise: { // args
-      id: string; // String!
+      slug: string; // String!
     }
   }
 }
