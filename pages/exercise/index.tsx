@@ -6,14 +6,14 @@ const ADD_EXERCISE = gql`
   query allExercises {
     allExercises {
       name
-      id
+      slug
     }
   }
 `;
 
 type Exercise = {
-  id: string;
   name: string;
+  slug: string;
 };
 
 export default function Exercise() {
@@ -37,7 +37,7 @@ export default function Exercise() {
           {data.allExercises.map((exercise: Exercise) => (
             <li key={exercise.id}>
               {exercise.name}{" "}
-              <Link href={`/exercise/edit/${exercise.id}`}>Edit</Link>
+              <Link href={`/exercise/edit/${exercise.slug}`}>Edit</Link>
             </li>
           ))}
         </ul>

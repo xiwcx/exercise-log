@@ -5,13 +5,14 @@
 type Exercise {
   id: String!
   name: String!
+  slug: String!
 }
 
 type Mutation {
-  createExercise(name: String!): Exercise
+  createExercise(name: String!, slug: String!): Exercise
 }
 
 type Query {
   allExercises: [Exercise]
-  exercise(id: String!): Exercise
+  exercise(slug: String!): Exercise
 }

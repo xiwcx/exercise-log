@@ -25,6 +25,7 @@ export const Exercise = objectType({
   definition(t) {
     t.nonNull.string("id");
     t.nonNull.string("name");
+    t.nonNull.string("slug");
   },
 });
 
@@ -32,11 +33,11 @@ export const QueryExercise = queryType({
   definition(t) {
     t.field("exercise", {
       type: Exercise,
-      args: { id: nonNull(stringArg()) },
+      args: { slug: nonNull(stringArg()) },
       resolve: async (_, args) =>
         prisma.exercise.findUnique({
           where: {
-            id: args.id,
+            slug: args.slug,
           },
         }),
     });
@@ -61,7 +62,7 @@ export const CreateExercise = extendType({
   definition: (t) => {
     t.field("createExercise", {
       type: Exercise,
-      args: { name: nonNull(stringArg()) },
+      args: { name: nonNull(stringArg()), slug: nonNull(stringArg()) },
       resolve: async (root, args, ctx) => {
         const user = await getUserFromAccessToken(ctx.session.accessToken);
 
